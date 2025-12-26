@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Account Disabled</title>
+    <style>
+        /* Reset and Fonts */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: #fff;
+            color: #1c1e21;
+        }
+
+        /* Header (Classic Blue) */
+        .header {
+            background-color: #3b5998; /* Old FB Mobile Blue */
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header h1 {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        /* Button Style */
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #3578e5; /* The bright blue button color */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 20px;
+            border: 1px solid #3578e5;
+        }
+
+        .help-link {
+            display: block;
+            text-align: center;
+            color: #3578e5;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* Gray Section (Not Todd?) */
+        .gray-section {
+            background-color: #f0f2f5;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        .gray-link {
+            display: block;
+            color: #4b4f56;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .gray-link:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Language Grid */
+        .footer-langs {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px 10px;
+            justify-content: center;
+        }
+        .lang-col {
+            width: 50%;
+            text-align: center;
+        }
+        .lang-item {
+            display: block;
+            color: #576b95; /* Link color for languages */
+            font-size: 12px;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        .lang-item.active {
+            color: #737373;
+            font-weight: bold;
+            cursor: default;
+        }
+        .plus-box {
+            display: inline-block;
+            border: 1px solid #576b95;
+            color: #576b95;
+            padding: 0px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>facebook</h1>
+    </div>
+
+    <div class="container">
+        <h2>Your account has been disabled</h2>
+        
+        <p>For more information please visit the Help Center.</p>
+        
+        <p>
+            Your account was disabled on <span id="disable-date">Nov 27, 2025</span>. If you think your account was disabled by mistake you can submit more information via the Help Center for up to <strong>180 days</strong> after your account was disabled. After that, your account will be permanently disabled and you will no longer be able to request a review.
+        </p>
+
+        <a href="#" class="btn">Download your information</a>
+        <a href="#" class="help-link">Go to Help Center</a>
+    </div>
+
+    <div class="gray-section">
+        <a href="#" class="gray-link">Not Todd? Log in here</a>
+        <a href="#" class="gray-link">Download your information</a>
+    </div>
+
+    <div class="footer-langs">
+        <div class="lang-col">
+            <span class="lang-item active">English (US)</span>
+            <a href="#" class="lang-item">Français (France)</a>
+            <a href="#" class="lang-item">Português (Brasil)</a>
+            <a href="#" class="lang-item">Italiano</a>
+        </div>
+        <div class="lang-col">
+            <a href="#" class="lang-item">Español</a>
+            <a href="#" class="lang-item">中文(简体)</a>
+            <a href="#" class="lang-item">Deutsch</a>
+            <a href="#" class="plus-box">+</a>
+        </div>
+    </div>
+
+</body>
+</html>
